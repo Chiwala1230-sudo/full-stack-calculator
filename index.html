@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zambia Revenue Authority - PAYE Calculator</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    
+
+    <header>
+        
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    
+                    <div class="logo">
+                        <img src="https://www.zra.org.zm/wp-content/uploads/2023/09/ZRA-logo-01.png" alt="ZRA Logo">
+                        <span class="logo-text">ZAMBIA REVENUE AUTHORITY</span>
+                    </div>
+                    
+                    <div class="top-links">
+                        <a href="#">About Us</a>
+                        <a href="#">Tax Payer Charter</a>
+                        <a href="#">Tenders</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Tutorials</a>
+                        <a href="#">Contact Us</a>
+                        <a href="#" class="login-btn"><i class="fas fa-user"></i> LOGIN</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="main-nav">
+            <div class="container">
+                <div class="nav-content">
+                    
+                    <div style="width: 200px;"></div>
+                    
+                    <div style="display: flex; align-items: center; gap: 20px;">
+                        <div class="menu">
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li class="has-dropdown">
+                                    <a href="#">Registrations <i class="fas fa-chevron-down"></i></a>
+                                    
+                                    <div class="dropdown">
+                                        <div class="dropdown-column">
+                                            <h4>Individual</h4>
+                                            <a href="#"><i class="fas fa-question-circle"></i> What is a TPIN?</a>
+                                            <a href="#"><i class="fas fa-users"></i> Get a TPIN</a>
+                                            <a href="#"><i class="fas fa-search"></i> Taxpayer Search</a>
+                                        </div>
+                                        <div class="dropdown-column">
+                                            <h4>Business</h4>
+                                            <a href="#"><i class="fas fa-building"></i> Get a TPIN</a>
+                                            <a href="#"><i class="fas fa-search"></i> Taxpayer Search</a>
+                                            <a href="#"><i class="fas fa-file-alt"></i> Requirements</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="has-dropdown">
+                                    <a href="#">Business <i class="fas fa-chevron-down"></i></a>
+                                </li>
+                                <li class="has-dropdown">
+                                    <a href="#">Customs <i class="fas fa-chevron-down"></i></a>
+                                </li>
+                                <li><a href="#">Publications</a></li>
+                                <li><a href="#">Statistics</a></li>
+                                <li><a href="#">Tax Portal</a></li>
+                                <li class="has-dropdown active">
+                                    <a href="#">Tax Tools <i class="fas fa-chevron-down"></i></a>
+                                    <div class="dropdown">
+                                        <div class="dropdown-column">
+                                            <h4>Tax Tools</h4>
+                                            <a href="#" class="active-link"><i class="fas fa-calculator"></i> PAYE Calculator</a>
+                                            <a href="#"><i class="fas fa-calculator"></i> Legacy TOT Calculator</a>
+                                            <a href="#"><i class="fas fa-car"></i> Motor Vehicle Calculator</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="search-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main>
+        <div class="container" style="margin-top: 40px;">
+            <!-- CALCULATOR SECTION -->
+            <div class="calculator-wrapper">
+                <div class="calculator-container">
+                    <h2 style="background-color: #a7a8a8; color: rgb(0, 0, 0); padding: 12px 15px; border-radius: 4px; border-bottom: none; font-size: 24px; margin-bottom: 25px; font-weight: 600; text-align: center; font-family: 'Montserrat', sans-serif;">Paye Calculator</h2>
+                    
+                    
+                    <div class="left-column">
+                        
+                        <!-- Basic Pay Input -->
+                        <div class="input-row">
+                            <label><strong>Basic Pay</strong></label>
+                            <input type="number" id="basicPay" class="input-field" placeholder="Enter Salary" value="0" min="0" step="0.01">
+                        </div>
+                        
+                        <!-- Allowances Input -->
+                        <div class="input-row">
+                            <label><strong>Allowances</strong></label>
+                            <input type="number" id="allowances" class="input-field" placeholder="Enter allowances" value="0" min="0" step="0.01">
+                        </div>
+                        
+                        <!-- Gross/Taxable Pay Display -->
+                        <div id ="result-row highlight">
+                            <label>Gross/Taxable Pay</label>
+                            <span id="grossPay">K 0.00</span>
+                        </div>
+                        
+                        <!-- Statutory Contribution Input -->
+                        <div class="input-row statutory-row">
+                            <div class="statutory-label">
+                                <strong>Statutory</strong>
+                                <strong>Contribution</strong>
+                            </div>
+                            <input type="number" id="statutory" class="input-field" placeholder="Enter allowances" value="0" min="0" step="0.01">
+                        </div>
+                        
+                        <!-- NAPSA 5% Display -->
+                        <div class="result-row">
+                            <label>Napsa 5%</label>
+                            <span id="napsa">K 0.00</span>
+                        </div>
+                        
+                        <!-- NHIMA Display -->
+                        <div class="result-row">
+                            <label>National Health Insurance</label>
+                            <span id="nhima">K 0.00</span>
+                        </div>
+                        
+                        <!-- Total Contributions Display -->
+                        <div class="result-row">
+                            <label><strong>Total Contributions</strong></label>
+                            <span id="totalContributions">K 0.00</span>
+                        </div>
+                        
+                        <!-- Total Tax Deductions Display -->
+                        <div class="result-row">
+                            <label><strong>Total Tax Deductions</strong></label>
+                            <span id="totalTax">K 0.00</span>
+                        </div>
+                        
+                        <!-- Total Deductions Display -->
+                        <div class="result-row">
+                            <label><strong>Total Deductions</strong></label>
+                            <span id="totalDeductions">K 0.00</span>
+                        </div>
+                        
+                        <!-- Net Salary Display - Highlighted -->
+                        <div class="result-row total">
+                            <label><strong>Net Salary</strong></label>
+                            <span id="netSalary">K 0.00</span>
+                        </div>
+                    </div>
+                    
+                    <!-- TAX BANDS SECTION -->
+                    <div style="text-align: center; margin: 30px 0 20px;">
+                        <h5>PAYE TAX COMPUTATION BANDS 2026</h5>
+                    </div>
+                    
+                    <!-- Tax Table -->
+                    <div class="table-section">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tax Bands</th>
+                                    <th>Chargeable Income</th>
+                                    <th>Tax Rate</th>
+                                    <th>Tax Due</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>First K5,100.00</td>
+                                    <td id="chargeable1">0.00</td>
+                                    <td>0%</td>
+                                    <td id="taxDue1">0.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Next K4,100.00</td>
+                                    <td id="chargeable2">0.00</td>
+                                    <td>20%</td>
+                                    <td id="taxDue2">0.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Next K4,400.00</td>
+                                    <td id="chargeable3">0.00</td>
+                                    <td>30%</td>
+                                    <td id="taxDue3">0.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Above K13,600.00</td>
+                                    <td id="chargeable4">0.00</td>
+                                    <td>37%</td>
+                                    <td id="taxDue4">0.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <!-- Note about tax calculation -->
+                        <div class="table-note">
+                            <small>Note: Gross pay shows the tax band category used to calculate your tax</small>
+                        </div>
+                        
+                        <!-- Clear Button -->
+                        <div class="button-container">
+                            <button class="clear-btn" onclick="resetCalculator()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-columns">
+                    <div class="footer-column">
+                        <h4>Contact us</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Plot No 1704 Kalambo Road, Lusaka</p>
+                        <p><i class="fas fa-phone"></i> 4111</p>
+                        <p><i class="fas fa-envelope"></i> advice@zra.org.zm</p>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Other Links</h4>
+                        <a href="#">NAPSA</a>
+                        <a href="#">Bank of Zambia</a>
+                        <a href="#">PACRA</a>
+                        <a href="#">Ministry of Finance</a>
+                        <a href="#">Zambia Development Agency</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Social Media</h4>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2026 Zambia Revenue Authority. All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+    
+    <iframe class="chatbot-frame" src="about:blank" title="Chatbot"></iframe>
+    <script src="script.js"></script>
+</body>
+</html>
